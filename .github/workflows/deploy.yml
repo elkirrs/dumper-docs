@@ -45,7 +45,7 @@ jobs:
 
       - name: Copy built site
         run: |
-          cp -r src/dist/* dumper/
+          cp -r app/dist/* dumper/
 
       - name: Set Git user
         run: |
