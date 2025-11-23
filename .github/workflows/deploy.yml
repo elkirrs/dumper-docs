@@ -1,6 +1,5 @@
 name: Deploy Docs to dumper/gh-pages
 
-# Запуск при пуше в main или вручную
 on:
   push:
     branches:
@@ -18,7 +17,7 @@ jobs:
       - name: Checkout target repository
         uses: actions/checkout@v4
         with:
-          repository: username/dumper   # <- Заменить на свой репозиторий
+          repository: elkirrs/dumper
           token: ${{ secrets.DEPLOY_TOKEN }}
           path: dumper
           fetch-depth: 0
