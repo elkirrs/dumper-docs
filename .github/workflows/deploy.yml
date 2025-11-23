@@ -1,5 +1,6 @@
 name: Deploy Docs to dumper/gh-pages
 
+# Запуск при пуше в main или вручную
 on:
   push:
     branches:
@@ -11,18 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout documentation
+      - name: Checkout dumper-docs
         uses: actions/checkout@v4
 
       - name: Checkout target repository
         uses: actions/checkout@v4
         with:
-          repository: elkirrs/dumper
+          repository: username/dumper   # <- Заменить на свой репозиторий
           token: ${{ secrets.DEPLOY_TOKEN }}
           path: dumper
           fetch-depth: 0
 
-      - name: Clear gh-pages
+      - name: Prepare gh-pages branch
         run: |
           cd dumper
           git checkout gh-pages
@@ -30,7 +31,7 @@ jobs:
 
       - name: Copy docs
         run: |
-          cp -r ./* dumper/
+          rsync -av --exclude 'dumper/' ../ ./
 
       - name: Commit and push changes
         run: |
