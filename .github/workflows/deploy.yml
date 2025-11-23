@@ -30,7 +30,13 @@ jobs:
 
       - name: Copy docs
         run: |
-          rsync -av --exclude 'dumper/' ../ ./
+          rsync -av --exclude 'dumper/' ../ ./  # ../ = dumper-docs, ./ = dumper
+
+      - name: Set Git user
+        run: |
+          cd dumper
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit and push changes
         run: |
