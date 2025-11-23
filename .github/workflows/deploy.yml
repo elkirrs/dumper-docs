@@ -1,0 +1,40 @@
+name: Deploy Docs to dumper/gh-pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout documentation
+        uses: actions/checkout@v4
+
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: elkirrs/dumper
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          path: dumper
+          fetch-depth: 0
+
+      - name: Clear gh-pages
+        run: |
+          cd dumper
+          git checkout gh-pages
+          rm -rf ./*
+
+      - name: Copy docs
+        run: |
+          cp -r ./* dumper/
+
+      - name: Commit and push changes
+        run: |
+          cd dumper
+          git add .
+          git commit -m "Update docs from dumper-docs" || echo "Nothing to commit"
+          git push origin gh-pages
