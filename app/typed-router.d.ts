@@ -37,6 +37,7 @@ declare module 'vue-router/auto-routes' {
     '/storages/ftp': RouteRecordInfo<'/storages/ftp', '/storages/ftp', Record<never, never>, Record<never, never>>,
     '/storages/local': RouteRecordInfo<'/storages/local', '/storages/local', Record<never, never>, Record<never, never>>,
     '/storages/sftp': RouteRecordInfo<'/storages/sftp', '/storages/sftp', Record<never, never>, Record<never, never>>,
+    '/template': RouteRecordInfo<'/template', '/template', Record<never, never>, Record<never, never>>,
     '/timelines': RouteRecordInfo<'/timelines', '/timelines', Record<never, never>, Record<never, never>>,
   }
 
@@ -125,6 +126,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/storages/sftp.vue': {
       routes: '/storages/sftp'
+      views: never
+    }
+    'src/pages/template.vue': {
+      routes: '/template'
       views: never
     }
     'src/pages/timelines.vue': {

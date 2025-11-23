@@ -82,7 +82,7 @@ export default {
           value: "Template for name dump",
           type: "string",
           required: false,
-          info: {text: '', link: ''}
+          info: {text: '', link: '/template'}
         },
         {
           key: "dir_remote",
@@ -159,7 +159,7 @@ export default {
           value: "Parallel upload dump file for several storages",
           type: "integer",
           required: false,
-          info: {text: 'default: 2', link: ''}
+          info: {text: ' default: 2', link: ''}
         },
         {
           key: "encrypt",

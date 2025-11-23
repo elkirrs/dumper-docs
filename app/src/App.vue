@@ -5,8 +5,15 @@
       app
       elevation="1"
     >
-      <div class="pa-8">
-        <h2 class="font-weight-medium pa-10">Dumper</h2>
+      <div class="pa-10">
+        <div class="pa-8">
+          <v-img
+            :width="135"
+            aspect-ratio="16/9"
+            cover
+            src="/dumper.svg"
+          ></v-img>
+        </div>
       </div>
 
       <v-spacer></v-spacer>
@@ -15,7 +22,6 @@
         <v-btn
           variant="text"
           href="https://github.com/elkirrs/dumper/releases"
-          target="_blank"
           rel="noopener"
         >
           Releases
@@ -26,7 +32,6 @@
         <a
           variant="plain"
           href="https://github.com/elkirrs/dumper"
-          target="_blank"
           rel="noopener"
         >
           <v-avatar size="34" image="/github.svg"></v-avatar>
@@ -85,6 +90,8 @@
             />
           </v-list-group>
 
+          <v-list-item title="Template" to="/template"/>
+          
           <!-- CRYPT SUBGROUP -->
           <v-list-group value="Crypt">
             <template #activator="{ props }">
