@@ -118,15 +118,15 @@ export default {
           value: "Encrypt database",
           type: "object",
           required: false,
-          info: {text: '', link: '/crypt/database'}
+          info: {text: '', link: '#/crypt/database'}
         },
-        {key: "shell", value: "Run shell scrypt", type: "object", required: false, info: {text: '', link: '/shell'}},
+        {key: "shell", value: "Run shell scrypt", type: "object", required: false, info: {text: '', link: '#/shell'}},
         {
           key: "docker",
           value: "Create dump in docker",
           type: "object",
           required: false,
-          info: {text: '', link: '/docker'}
+          info: {text: '', link: '#/docker'}
         },
       ],
       yamlConfig: [],

@@ -74,22 +74,6 @@ export default {
         }
       },
       {
-        title: 'server',
-        value: {
-          servers: {
-            srv_one: {
-              title: "Server #1",
-              name: "server_one",
-              host: "10.234.23.45",
-              port: 22,
-              user: "user_server",
-              key: '/root/.ssh/id_rsa.pub',
-              ...this.configBase,
-            }
-          }
-        }
-      },
-      {
         title: 'database',
         value: {
           databases: {

@@ -92,7 +92,7 @@ export default {
           value: "Run shell scrypt in server",
           type: "object",
           required: false,
-          info: {text: 'This script will work if database script not set', link: '/shell'}
+          info: {text: 'This script will work if database script not set', link: '#/shell'}
         },
       ],
       yamlConfig: [],

@@ -154,7 +154,7 @@ export default {
       {
         title: 'v1.1.0',
         values: [
-          'Add flag --db. It can be used to create backups of multiple databases in one rune',
+          'Add flag --db. It can be used to create backups of multiple databases in one run',
           'Fix the exit from the app',
         ],
         date: '2025-08-19',

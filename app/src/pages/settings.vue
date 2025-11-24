@@ -82,7 +82,7 @@ export default {
           value: "Template for name dump",
           type: "string",
           required: false,
-          info: {text: '', link: '/template'}
+          info: {text: '', link: '#/template'}
         },
         {
           key: "dir_remote",
@@ -166,21 +166,21 @@ export default {
           value: "Default encryption for all databases",
           type: "object",
           required: false,
-          info: {text: '', link: '/crypt/database'}
+          info: {text: '', link: '#/crypt/database'}
         },
         {
           key: "shell",
           value: "Default shell script for all databases",
           type: "object",
           required: false,
-          info: {text: '', link: '/shell'}
+          info: {text: '', link: '#/shell'}
         },
         {
           key: "docker",
           value: "Default docker command for all databases",
           type: "object",
           required: false,
-          info: {text: '', link: '/docker'}
+          info: {text: '', link: '#/docker'}
         },
 
       ],
