@@ -1,5 +1,5 @@
 <template>
-  <v-timeline align="start" small>
+  <v-timeline align="start" small :density="$breakpoint.isMobile ? 'compact' : 'default'">
     <v-timeline-item
       v-for="(item, i) in timelines"
       :key="i"
@@ -18,7 +18,7 @@
         </h3>
         <div>
           <v-alert density="compact">
-            <p v-for="(value, i) in item.values">
+            <p v-for="value in item.values">
               {{ value }}
             </p>
           </v-alert>
