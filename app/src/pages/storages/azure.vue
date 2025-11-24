@@ -28,9 +28,16 @@
 export default {
   data() {
     return {
-      typeKey: ['azure'],
+      typeKey: ['type: azure'],
       snackbar: false,
       configKeys: [
+        {
+          key: "type",
+          value: "Type storage",
+          type: "string",
+          required: true,
+          info: {text: '', link: ''}
+        },
         {
           key: "container",
           value: "The name of the container in Azure Blob Storage where the backup files will be saved.",

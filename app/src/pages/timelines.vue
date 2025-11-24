@@ -13,16 +13,14 @@
         ></div>
       </template>
       <div>
-        <h2 class="mt-n1 headline font-weight-light mb-4 text-cyan">
+        <h3 class="mt-n1 headline font-weight-light mb-4 text-cyan">
           {{ item.title }}
-        </h2>
+        </h3>
         <div>
-          <v-alert
-            density="compact"
-            v-for="(value, i) in item.values"
-            key="i"
-            :text="value">
-
+          <v-alert density="compact">
+            <p v-for="(value, i) in item.values">
+              {{ value }}
+            </p>
           </v-alert>
 
         </div>
@@ -35,6 +33,14 @@
 export default {
   data: () => ({
     timelines: [
+      {
+        title: 'v1.9.3',
+        values: [
+          'Add support to several storages of the same type',
+          'Add validation storages',
+        ],
+        date: '2025-11-26',
+      },
       {
         title: 'v1.9.2',
         values: [

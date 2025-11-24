@@ -28,9 +28,16 @@
 export default {
   data() {
     return {
-      typeKey: ['local'],
+      typeKey: ['type: local'],
       snackbar: false,
       configKeys: [
+        {
+          key: "type",
+          value: "Type storage",
+          type: "string",
+          required: true,
+          info: {text: '', link: ''}
+        },
         {
           key: "dir",
           value: "Using creating a backup with docker",
