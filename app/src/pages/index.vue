@@ -5,7 +5,7 @@
   </div>
 
   <div class="pb-5">
-    <v-alert border="start" variant="text"  density="compact">
+    <v-alert border="start" variant="text" density="compact">
       Dumper — This is a CLI utility for creating backups databases of various types with
       flexible connection and storage
     </v-alert>
@@ -18,6 +18,22 @@
       cover
       src="/dumper.gif"
     ></v-img>
+  </div>
+
+
+  <div class="pb-5">
+    <h2>Installation</h2>
+
+    <span>You can install Dumper using the installation script or download archive: </span>
+    <span>
+        <a :href="'https://github.com/elkirrs/dumper/releases/tag/' + version">Dumper</a>
+      </span>
+    <v-alert
+      border="start"
+      color="dark"
+    >
+      $ curl -sSL https://elkirrs.github.io/dumper/install.sh | sh
+    </v-alert>
   </div>
 
   <div class="pb-5">
@@ -40,6 +56,7 @@
 export default {
   data() {
     return {
+      version: "",
       launch: [
         {
           title: 'Dumper start with a choice of database from config file (Manual select database)',
@@ -117,6 +134,20 @@ export default {
         {value: 'Backup from docker'},
         {value: 'Shell script after and before backup'},
       ],
+    }
+  },
+  async mounted() {
+    try {
+      const response = await fetch(
+        'https://api.github.com/repos/elkirrs/dumper/releases/latest'
+      )
+      const data = await response.json()
+
+      this.version = data.tag_name
+    } catch (e) {
+      console.error('Error loading version:', e)
+    } finally {
+      this.loading = false
     }
   }
 }

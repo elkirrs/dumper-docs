@@ -37,7 +37,7 @@ export default {
         title: 'v1.9.3',
         values: [
           'Add support to several storages of the same type',
-          'Add validation storages',
+          'Add validation for storages, servers, databases',
         ],
         date: '2025-11-26',
       },
