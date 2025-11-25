@@ -102,7 +102,7 @@ export default {
           key: "location",
           value: "Dump execution methode",
           type: "string",
-          required: true,
+          required: false,
           info: {text: 'Type: "server"', link: ''}
         },
         {

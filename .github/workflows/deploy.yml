@@ -47,6 +47,11 @@ jobs:
         run: |
           cp -r app/dist/* dumper/
 
+      - name: Copy install.sh
+        run: |
+          cp install.sh dumper/install.sh
+          chmod +x dumper/install.sh
+
       - name: Set Git user
         run: |
           cd dumper

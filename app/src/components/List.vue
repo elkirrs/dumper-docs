@@ -22,13 +22,12 @@
 
       <template #subtitle>
         <div :style="{ marginLeft: (indent + 15) + 'px' }">
-          <span v-if="item?.type" class="value"> Type: <strong>{{ item.type }}</strong></span>
-          <span v-if="item?.type" class="value"> Required: <strong>{{ item.required }}</strong></span>
+          <span v-if="item?.type" class="value">&#8203; Type: <strong>{{ item.type }}</strong></span>
+          <span v-if="item?.type" class="value">&#8203; Required: <strong>{{ item.required }}</strong></span>
 
-          <span v-if="item.info?.text" class="value"> {{ item.info.text }}</span>
+          <span v-if="item.info?.text" class="value">&#8203; {{ item.info.text }}</span>
 
-          <span v-if="item.info?.link" class="value">
-            , more info:
+          <span v-if="item.info?.link" class="value">, more info:
             <a :href="item.info.link" class="info-link">link</a>
           </span>
         </div>

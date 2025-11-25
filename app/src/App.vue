@@ -29,7 +29,6 @@
 
       <div class="pr-16" v-if="!isMobile">
         <a
-          variant="plain"
           href="https://github.com/elkirrs/dumper"
           rel="noopener"
         >
@@ -110,9 +109,7 @@
 
           <v-list-item title="Shell" to="/shell" />
           <v-list-item title="Docker" to="/docker" />
-
-          <v-divider class="my-2" />
-
+          
         </v-list-group>
       </v-list>
 
@@ -170,7 +167,8 @@ const route = useRoute()
 
 const { smAndDown } = useDisplay()
 const isMobile = smAndDown
-const drawer = ref(!isMobile.value)
+let drawer;
+drawer = ref(!isMobile.value);
 
 watch(isMobile, (mobile) => {
   drawer.value = !mobile
@@ -222,13 +220,5 @@ h2 {
   margin: 0;
 }
 
-@media (max-width: 600px) {
-  .v-navigation-drawer {
-    width: 240px !important;
-  }
-  .v-list-item {
-    font-size: 14px;
-    padding: 6px 12px;
-  }
-}
+
 </style>
