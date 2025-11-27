@@ -57,6 +57,7 @@ export default {
   data() {
     return {
       version: "",
+      loading: false,
       launch: [
         {
           title: 'Dumper start with a choice of database from config file (Manual select database)',
@@ -148,6 +149,19 @@ export default {
       console.error('Error loading version:', e)
     } finally {
       this.loading = false
+    }
+
+    try {
+      this.loadingStarts = false
+      const response = await fetch(
+        'https://api.github.com/repos/elkirrs/dumper'
+      )
+      const data = await response.json()
+      this.stars = data.stargazers_count
+    } catch (e) {
+      console.error('Error loading stars:', e)
+    } finally {
+      this.loadingStarts = false
     }
   }
 }

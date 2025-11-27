@@ -2,11 +2,11 @@
   <v-app :theme="theme">
     <!-- TOP BAR -->
     <v-app-bar app elevation="1">
-      <v-app-bar-nav-icon v-if="isMobile" @click="drawer = !drawer" />
+      <v-app-bar-nav-icon v-if="isMobile" @click="drawer = !drawer"/>
 
       <v-spacer v-if="isMobile"></v-spacer>
 
-      <div :class="!isMobile ? 'pa-16' : 'pr-10 d-flex justify-center'">
+      <div :class="!isMobile ? 'pa-16' : 'd-flex justify-center'">
         <v-img
           :width="isMobile ? 100 : 135"
           aspect-ratio="16/9"
@@ -17,22 +17,12 @@
 
       <v-spacer></v-spacer>
 
-      <div class="pr-4" v-if="!isMobile">
-        <v-btn
-          variant="text"
-          href="https://github.com/elkirrs/dumper/releases"
-          rel="noopener"
-        >
-          Releases
-        </v-btn>
-      </div>
-
-      <div class="pr-16" v-if="!isMobile">
+      <div :class="!isMobile ? 'pr-16': 'pr-4'">
         <a
           href="https://github.com/elkirrs/dumper"
           rel="noopener"
         >
-          <v-avatar size="34" image="/github.svg"></v-avatar>
+          <v-avatar size="28" image="/github.svg"></v-avatar>
         </a>
       </div>
 
@@ -49,25 +39,25 @@
       :temporary="isMobile"
     >
       <v-list nav density="compact">
-        <v-list-item title="Home" to="/" />
+        <v-list-item title="Home" to="/"/>
       </v-list>
 
-      <v-divider class="my-2" />
+      <v-divider class="my-2"/>
 
       <v-list nav v-model:opened="open" density="compact">
         <!-- CONFIGURATION GROUP -->
         <v-list-group value="Configuration">
           <template #activator="{ props }">
-            <v-list-item v-bind="props" title="Configuration" />
+            <v-list-item v-bind="props" title="Configuration"/>
           </template>
 
-          <v-list-item title="Overview" to="/overview" />
-          <v-list-item title="Settings" to="/settings" />
+          <v-list-item title="Overview" to="/overview"/>
+          <v-list-item title="Settings" to="/settings"/>
 
           <!-- STORAGES SUBGROUP -->
           <v-list-group value="Storages">
             <template #activator="{ props }">
-              <v-list-item v-bind="props" title="Storages" />
+              <v-list-item v-bind="props" title="Storages"/>
             </template>
             <v-list-item
               v-for="([title, url], i) in storages"
@@ -77,12 +67,12 @@
             />
           </v-list-group>
 
-          <v-list-item title="Servers" to="/servers" />
+          <v-list-item title="Servers" to="/servers"/>
 
           <!-- DATABASES SUBGROUP -->
           <v-list-group value="Databases">
             <template #activator="{ props }">
-              <v-list-item v-bind="props" title="Databases" />
+              <v-list-item v-bind="props" title="Databases"/>
             </template>
             <v-list-item
               v-for="([title, url], i) in databases"
@@ -92,12 +82,12 @@
             />
           </v-list-group>
 
-          <v-list-item title="Template" to="/template" />
+          <v-list-item title="Template" to="/template"/>
 
           <!-- CRYPT SUBGROUP -->
           <v-list-group value="Crypt">
             <template #activator="{ props }">
-              <v-list-item v-bind="props" title="Crypt" />
+              <v-list-item v-bind="props" title="Crypt"/>
             </template>
             <v-list-item
               v-for="([title, url], i) in crypt"
@@ -107,65 +97,44 @@
             />
           </v-list-group>
 
-          <v-list-item title="Shell" to="/shell" />
-          <v-list-item title="Docker" to="/docker" />
-          
+          <v-list-item title="Shell" to="/shell"/>
+          <v-list-item title="Docker" to="/docker"/>
+
         </v-list-group>
       </v-list>
 
-      <v-divider class="my-2" />
+      <v-divider class="my-2"/>
 
       <v-list nav density="compact">
-        <v-list-item title="Timelines" to="/timelines" />
+        <v-list-item title="Timelines" to="/timelines"/>
       </v-list>
-
-      <div v-if="isMobile">
-        <v-divider class="my-2" />
-
-        <v-list nav density="compact">
-          <v-list-item
-            href="https://github.com/elkirrs/dumper"
-            target="_blank"
-            rel="noopener"
-          >
-            <v-list-item-title>GitHub</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item
-            href="https://github.com/elkirrs/dumper/releases"
-            target="_blank"
-            rel="noopener"
-          >
-            <v-list-item-title>Releases</v-list-item-title>
-          </v-list-item>
-
-        </v-list>
-      </div>
-
 
     </v-navigation-drawer>
 
     <!-- MAIN CONTENT -->
     <v-main>
       <v-container class="pt-8">
-        <router-view />
+        <router-view/>
       </v-container>
     </v-main>
 
-    <AppFooter />
+    <AppFooter/>
   </v-app>
 </template>
 
 <script setup>
-import { ref, watch } from "vue"
-import { useRoute } from "vue-router"
-import { useDisplay } from "vuetify"
+import {ref, watch, onMounted} from "vue"
+import {useRoute} from "vue-router"
+import {useDisplay} from "vuetify"
 
 const theme = ref("light")
 const open = ref([])
 const route = useRoute()
 
-const { smAndDown } = useDisplay()
+const stars = ref(null)
+const loadingStars = ref(false)
+
+const {smAndDown} = useDisplay()
 const isMobile = smAndDown
 let drawer;
 drawer = ref(!isMobile.value);
@@ -211,8 +180,22 @@ watch(
       open.value.push("Configuration")
     }
   },
-  { immediate: true }
+  {immediate: true}
 )
+onMounted(async () => {
+  try {
+    loadingStars.value = false
+    const response = await fetch(
+      "https://api.github.com/repos/elkirrs/dumper"
+    )
+    const data = await response.json()
+    stars.value = data.stargazers_count ?? 0
+  } catch (e) {
+    console.error("Error loading stars:", e)
+  } finally {
+    loadingStars.value = true
+  }
+})
 </script>
 
 <style scoped>
