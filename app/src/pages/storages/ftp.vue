@@ -81,10 +81,11 @@ export default {
     configBase() {
       return {
         ftp: {
+          type: "ftp",
           dir: './local_directory',
           host: '172.168.139.109',
           port: 21,
-          username: 'sftpuser',
+          username: 'ftpuser',
           password: '123456',
         }
       }

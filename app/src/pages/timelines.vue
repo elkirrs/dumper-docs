@@ -38,6 +38,7 @@ export default {
         values: [
           'Add support to several storages of the same type',
           'Add validation for storages, servers, databases',
+          'Fix: issue with global storages',
         ],
         date: '2025-11-26',
       },

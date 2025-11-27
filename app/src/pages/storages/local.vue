@@ -53,6 +53,7 @@ export default {
     configBase() {
       return {
         local: {
+          type: "local",
           dir: './local_directory',
         }
       }

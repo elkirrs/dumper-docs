@@ -88,6 +88,7 @@ export default {
     configBase() {
       return {
         sftp: {
+          type: "sftp",
           dir: './local_directory',
           host: '172.168.139.109',
           port: 22,

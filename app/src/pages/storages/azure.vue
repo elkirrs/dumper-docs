@@ -103,6 +103,7 @@ export default {
     configBase() {
       return {
         azure: {
+          type: "azure",
           container: 'data/dumps',
           endpoint: 'https://mycompanydata.blob.core.windows.net',
           auth_type: 'SharedKey',
