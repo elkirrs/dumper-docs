@@ -123,6 +123,11 @@ export default {
           value: 'Recovery token for recovery',
           info: {text: 'Example: --recovery 4j3k4lc7na09s...', link: ''},
         },
+        {
+          key: '--scope',
+          value: 'The method of encrypting the config file',
+          info: {text: 'Example: --scope device, Types: "app", "device"', link: ''},
+        },
       ],
 
       features: [

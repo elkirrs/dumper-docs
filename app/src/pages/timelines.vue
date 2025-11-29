@@ -34,6 +34,13 @@ export default {
   data: () => ({
     timelines: [
       {
+        title: 'v1.9.4',
+        values: [
+          'Add support encrypt config flag --scope',
+        ],
+        date: '2025-11-30',
+      },
+      {
         title: 'v1.9.3',
         values: [
           'Add support to several storages of the same type',
