@@ -1,12 +1,12 @@
 <template>
 
   <div class="pb-5">
-    <h2>FTP</h2>
+    <h2>Amazon S3</h2>
   </div>
 
   <div class="pb-5">
     <v-alert border="start" variant="text" density="compact">
-      Uploading a file to the remote storage server
+      Uploading a file to the s3 storage
     </v-alert>
   </div>
 
@@ -28,7 +28,7 @@
 export default {
   data() {
     return {
-      typeKey: ['type: ftp'],
+      typeKey: ['type: s3'],
       snackbar: false,
       configKeys: [
         {
@@ -39,36 +39,29 @@ export default {
           info: {text: '', link: ''}
         },
         {
-          key: "dir",
-          value: "Using creating a backup with docker",
+          key: "region",
+          value: "The AWS region where your S3 bucket is located",
           type: "string",
           required: true,
           info: {text: '', link: ''}
         },
         {
-          key: "host",
-          value: "The IP address server or domain name",
+          key: "access_key",
+          value: "The public part of the AWS Access Key User ID",
           type: "string",
           required: true,
           info: {text: '', link: ''}
         },
         {
-          key: "port",
-          value: "Connection port to remote server",
+          key: "secret_key",
+          value: "This is the secret part of the AWS key pair (IAM Access Key Secret)",
           type: "string",
           required: true,
           info: {text: '', link: ''}
         },
         {
-          key: "username",
-          value: "Username for auth connection server",
-          type: "string",
-          required: true,
-          info: {text: '', link: ''}
-        },
-        {
-          key: "password",
-          value: "Password for auth connection server",
+          key: "bucket",
+          value: "The name of your S3 Bucket container where the files will be stored.",
           type: "string",
           required: true,
           info: {text: '', link: ''}
@@ -80,13 +73,12 @@ export default {
   computed: {
     configBase() {
       return {
-        ftp: {
-          type: "ftp",
-          dir: './local_directory',
-          host: '172.168.139.109',
-          port: 21,
-          username: 'ftpuser',
-          password: '123456',
+        aws_s3: {
+          type: "s3",
+          region: "us-east-1",
+          access_key: "AKIAEXAMPLEACCESSKEY",
+          secret_key: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          bucket: "my-dump-bucket",
         }
       }
     }

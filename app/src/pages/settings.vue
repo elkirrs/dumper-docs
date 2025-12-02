@@ -152,7 +152,7 @@ export default {
           value: "Default list storages",
           type: "array",
           required: false,
-          info: {text: 'default: "local"', link: ''}
+          info: {text: '', link: '#/storages/local'},
         },
         {
           key: "parallel_download",
@@ -225,6 +225,18 @@ export default {
         }
       },
       {
+        title: 'with storages',
+        value: {
+          settings: {
+            ...this.configBase,
+            storages: [
+              'sftp',
+              'azure'
+            ]
+          }
+        }
+      },
+      {
         title: 'with shell',
         value: {
           settings: {
@@ -267,6 +279,10 @@ export default {
         value: {
           settings: {
             ...this.configBase,
+            storages: [
+              'sftp',
+              'azure',
+            ],
             shell: {
               enable: true,
               after: 'echo "run script before create dump',

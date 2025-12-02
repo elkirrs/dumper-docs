@@ -148,6 +148,7 @@ const storages = [
   ["SFTP", "/storages/sftp"],
   ["FTP", "/storages/ftp"],
   ["Azure", "/storages/azure"],
+  ["Amazon S3", "/storages/s3"],
 ]
 
 const databases = [

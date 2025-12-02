@@ -36,6 +36,7 @@ declare module 'vue-router/auto-routes' {
     '/storages/azure': RouteRecordInfo<'/storages/azure', '/storages/azure', Record<never, never>, Record<never, never>>,
     '/storages/ftp': RouteRecordInfo<'/storages/ftp', '/storages/ftp', Record<never, never>, Record<never, never>>,
     '/storages/local': RouteRecordInfo<'/storages/local', '/storages/local', Record<never, never>, Record<never, never>>,
+    '/storages/s3': RouteRecordInfo<'/storages/s3', '/storages/s3', Record<never, never>, Record<never, never>>,
     '/storages/sftp': RouteRecordInfo<'/storages/sftp', '/storages/sftp', Record<never, never>, Record<never, never>>,
     '/template': RouteRecordInfo<'/template', '/template', Record<never, never>, Record<never, never>>,
     '/timelines': RouteRecordInfo<'/timelines', '/timelines', Record<never, never>, Record<never, never>>,
@@ -122,6 +123,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/storages/local.vue': {
       routes: '/storages/local'
+      views: never
+    }
+    'src/pages/storages/s3.vue': {
+      routes: '/storages/s3'
       views: never
     }
     'src/pages/storages/sftp.vue': {

@@ -34,7 +34,9 @@ export default {
   computed: {
     yamlText() {
       if (!this.item || !this.item.value) return "";
-      return yaml.dump(this.item.value, { indent: 2 });
+      return yaml.dump(this.item.value, {
+        indent: 2,
+      });
     }
   },
 

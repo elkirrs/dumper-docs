@@ -102,37 +102,11 @@ export default {
   mounted() {
     this.yamlConfig = [
       {
-        title: 'global',
+        title: 'default',
         value: {
-          settings: {
-            storages: [
-              'sftp'
-            ]
-          },
           storages: {
             ...this.configBase,
           }
-        }
-      },
-      {
-        title: 'Database',
-        value: {
-          storages: {
-            ...this.configBase,
-          },
-          databases: {
-            my_db: {
-              title: "My DB MySQL",
-              name: "mydb",
-              user: "myuser",
-              password: "mypassword",
-              port: 3306,
-              driver: 'mysql',
-              server: "srv-mysql",
-              format: "sql",
-              storages: ["sftp"],
-            }
-          },
         }
       },
     ]

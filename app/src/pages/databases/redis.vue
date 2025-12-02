@@ -100,7 +100,7 @@ export default {
           value: "Storage list when the dump need to upload",
           type: "array",
           required: true,
-          info: {text: '', link: ''}
+          info: {text: '(Not required if storage set up in global setting)', link: ''}
         },
         {
           key: "options",

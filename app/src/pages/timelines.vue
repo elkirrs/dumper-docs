@@ -37,8 +37,9 @@ export default {
         title: 'v1.9.4',
         values: [
           'Add support encrypt config flag --scope',
+          'Add support amazon s3 storage'
         ],
-        date: '2025-11-30',
+        date: '2025-12-02',
       },
       {
         title: 'v1.9.3',
