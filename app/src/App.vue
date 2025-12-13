@@ -103,10 +103,11 @@
         </v-list-group>
       </v-list>
 
+
       <v-divider class="my-2"/>
 
-      <v-list nav density="compact">
-        <v-list-item title="Timelines" to="/timelines"/>
+      <v-list nav density="compact" v-if="version">
+        <v-list-item :title="'Version: ' + version"/>
       </v-list>
 
     </v-navigation-drawer>
@@ -132,6 +133,7 @@ const open = ref([])
 const route = useRoute()
 
 const stars = ref(null)
+const version = ref(null)
 const loadingStars = ref(false)
 
 const {smAndDown} = useDisplay()
@@ -185,16 +187,15 @@ watch(
 )
 onMounted(async () => {
   try {
-    loadingStars.value = false
     const response = await fetch(
-      "https://api.github.com/repos/elkirrs/dumper"
+      'https://api.github.com/repos/elkirrs/dumper/releases/latest'
     )
     const data = await response.json()
-    stars.value = data.stargazers_count ?? 0
+
+    version.value = data.tag_name
   } catch (e) {
-    console.error("Error loading stars:", e)
+    console.error('Error loading version:', e)
   } finally {
-    loadingStars.value = true
   }
 })
 </script>
