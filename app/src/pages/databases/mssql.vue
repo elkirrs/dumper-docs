@@ -139,10 +139,19 @@ export default {
       yamlConfig: [],
       restoreDatabase: [
         {
-          title: 'Use this command to restore database:',
-          value: '$ sqlpackage /Action:Import /SourceFile:"backup.bacpac" /TargetServerName:"localhost" /TargetDatabaseName:"MyDatabase"'
+          title: 'Use this command to restore database if you use one.bacpac:',
+          value: '$ sqlpackage /Action:Import /SourceFile:"one.bacpac" /TargetServerName:"localhost" /TargetDatabaseName:"MyDatabase" /TargetUser:sa'
         },
-        {title: 'If you have one.bak file:', value: 'Via SQL Server Management Studio (SSMS)'},
+        {
+          title: 'If you have one.bak file:',
+          value: '$ sqlcmd -S localhost -U sa -C -Q "\n' +
+            'RESTORE DATABASE MyDB\n' +
+            'FROM DISK = \'/dump/myDB.bak\'\n' +
+            'WITH MOVE \'MyDB\' TO \'/var/opt/mssql/data/MyDB.mdf\',\n' +
+            '     MOVE \'MyDB_log\' TO \'/var/opt/mssql/data/MyDB_log.ldf\',\n' +
+            '     REPLACE\n' +
+            '"'
+        },
       ],
     }
   },
