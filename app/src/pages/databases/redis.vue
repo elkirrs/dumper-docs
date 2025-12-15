@@ -110,6 +110,7 @@ export default {
           info: {text: '', link: ''},
           sub: [
             {key: 'mode', value: "Type create dump", type: "string", required: true, info: {text: 'Mode list: "save", "sync"', link: ''}},
+            {key: 'source', value: "Full path to dump util", type: "string", required: false},
           ],
         },
         {
@@ -126,6 +127,13 @@ export default {
           type: "object",
           required: false,
           info: {text: '', link: '#/docker'}
+        },
+        {
+          key: "dir_remote",
+          value: "Dir remote for dumps",
+          type: "string",
+          required: false,
+          info: {text: 'default value from global settings (if the default value is not set, then "./" is used.)', link: ''}
         },
       ],
       yamlConfig: [],

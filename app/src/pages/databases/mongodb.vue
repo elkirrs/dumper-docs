@@ -111,6 +111,7 @@ export default {
           sub: [
             {key: 'auth_source', value: "Auth source", type: "string", required: false},
             {key: 'ssl', value: "SSL/TLS", type: "bool", required: false},
+            {key: 'source', value: "Full path to dump util", type: "string", required: false},
           ],
         },
         {
@@ -127,6 +128,13 @@ export default {
           type: "object",
           required: false,
           info: {text: '', link: '#/docker'}
+        },
+        {
+          key: "dir_remote",
+          value: "Dir remote for dumps",
+          type: "string",
+          required: false,
+          info: {text: 'default value from global settings (if the default value is not set, then "./" is used.)', link: ''}
         },
       ],
       yamlConfig: [],

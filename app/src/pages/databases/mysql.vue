@@ -115,6 +115,23 @@ export default {
           required: false,
           info: {text: '', link: '#/docker'}
         },
+        {
+          key: "options",
+          value: "Additional options for the database",
+          type: "object",
+          required: false,
+          info: {text: '', link: ''},
+          sub: [
+            {key: 'source', value: "Full path to dump util", type: "string", required: false},
+          ],
+        },
+        {
+          key: "dir_remote",
+          value: "Dir remote for dumps",
+          type: "string",
+          required: false,
+          info: {text: 'default value from global settings (if the default value is not set, then "./" is used.)', link: ''}
+        },
       ],
       yamlConfig: [],
       restoreDatabase: [
