@@ -38,9 +38,9 @@ export default {
   components: {RestoreDatabase},
   data() {
     return {
-      driver: "mongodb",
+      driver: "mongo",
       database: "MongoDB",
-      utility: ['mongodb'],
+      utility: ['mongo'],
       snackbar: false,
       configKeys: [
         {
@@ -112,6 +112,18 @@ export default {
             {key: 'auth_source', value: "Auth source", type: "string", required: false},
             {key: 'ssl', value: "SSL/TLS", type: "bool", required: false},
             {key: 'source', value: "Full path to dump util", type: "string", required: false},
+            {
+              key: 'inc_tables',
+              value: "Create a table dump include only tables from this list.",
+              type: "array",
+              required: false
+            },
+            {
+              key: 'exc_tables',
+              value: "Create a table dump, excluding tables from this list",
+              type: "array",
+              required: false
+            },
           ],
         },
         {
@@ -134,7 +146,10 @@ export default {
           value: "Dir remote for dumps",
           type: "string",
           required: false,
-          info: {text: 'default value from global settings (if the default value is not set, then "./" is used.)', link: ''}
+          info: {
+            text: 'default value from global settings (if the default value is not set, then "./" is used.)',
+            link: ''
+          }
         },
       ],
       yamlConfig: [],

@@ -126,6 +126,13 @@ export default {
           sub: [
             {key: 'ssl', value: "SSL", type: "bool", required: false},
             {key: 'source', value: "Full path to dump util", type: "string", required: false},
+            {
+              key: 'inc_tables',
+              value: "Create a table dump include only tables from this list.",
+              type: "array",
+              required: false,
+              info: {text: 'Only format bacpac', link: ''}
+            },
           ],
         },
         {
@@ -133,7 +140,10 @@ export default {
           value: "Dir remote for dumps",
           type: "string",
           required: false,
-          info: {text: 'default value from global settings (if the default value is not set, then "./" is used.)', link: ''}
+          info: {
+            text: 'default value from global settings (if the default value is not set, then "./" is used.)',
+            link: ''
+          }
         },
       ],
       yamlConfig: [],
@@ -162,7 +172,7 @@ export default {
         name: "mydb",
         user: "sa",
         password: "myPassword1",
-        port: 5432,
+        port: 1433,
         driver: this.driver,
         server: "srv-mssql",
         format: "bacpac",
