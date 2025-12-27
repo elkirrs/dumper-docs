@@ -225,7 +225,7 @@ export default {
         }
       },
       {
-        title: 'with storages',
+        title: 'storages',
         value: {
           settings: {
             ...this.configBase,
@@ -237,7 +237,7 @@ export default {
         }
       },
       {
-        title: 'with shell',
+        title: 'shell',
         value: {
           settings: {
             ...this.configBase,
@@ -250,7 +250,7 @@ export default {
         }
       },
       {
-        title: 'with encrypt',
+        title: 'encrypt',
         value: {
           settings: {
             ...this.configBase,
@@ -263,7 +263,7 @@ export default {
         }
       },
       {
-        title: 'with docker',
+        title: 'docker',
         value: {
           settings: {
             ...this.configBase,
@@ -275,7 +275,7 @@ export default {
         }
       },
       {
-        title: 'with all',
+        title: 'all',
         value: {
           settings: {
             ...this.configBase,

@@ -188,7 +188,7 @@ export default {
         }
       },
       {
-        title: 'With options',
+        title: 'options',
         value: {
           databases: {
             mongo_db: {
@@ -202,7 +202,7 @@ export default {
         }
       },
       {
-        title: 'With archive',
+        title: 'archive',
         value: {
           databases: {
             mongo_db: {
@@ -213,7 +213,7 @@ export default {
         }
       },
       {
-        title: 'With docker',
+        title: 'docker',
         value: {
           databases: {
             mongo_db: {
@@ -227,7 +227,7 @@ export default {
         }
       },
       {
-        title: 'With shell',
+        title: 'shell',
         value: {
           databases: {
             mongo_db: {
@@ -242,7 +242,7 @@ export default {
         }
       },
       {
-        title: 'With encrypt',
+        title: 'encrypt',
         value: {
           databases: {
             mongo_db: {
@@ -257,7 +257,40 @@ export default {
         }
       },
       {
-        title: 'With All',
+        title: 'include table',
+        value: {
+          databases: {
+            mongo_db: {
+              ...this.configBase,
+              options: {
+                inc_table: [
+                  'table_1',
+                  'table_2',
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        title: 'exclude table',
+        value: {
+          databases: {
+            mongo_db: {
+              ...this.configBase,
+              options: {
+                exc_table: [
+                  'table_1',
+                  'table_2',
+                ]
+              }
+            }
+          }
+        }
+      },
+
+      {
+        title: 'All',
         value: {
           databases: {
             mongo_db: {
@@ -286,7 +319,7 @@ export default {
         }
       },
       {
-        title: 'With disabled',
+        title: 'disabled',
         value: {
           databases: {
             mongo_db: {

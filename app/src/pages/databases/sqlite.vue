@@ -173,7 +173,7 @@ export default {
         }
       },
       {
-        title: 'With archive',
+        title: 'archive',
         value: {
           databases: {
             psql_db: {
@@ -184,7 +184,7 @@ export default {
         }
       },
       {
-        title: 'With docker',
+        title: 'docker',
         value: {
           databases: {
             psql_db: {
@@ -198,7 +198,7 @@ export default {
         }
       },
       {
-        title: 'With shell',
+        title: 'shell',
         value: {
           databases: {
             psql_db: {
@@ -213,7 +213,7 @@ export default {
         }
       },
       {
-        title: 'With encrypt',
+        title: 'encrypt',
         value: {
           databases: {
             psql_db: {
@@ -228,7 +228,7 @@ export default {
         }
       },
       {
-        title: 'With All',
+        title: 'All',
         value: {
           databases: {
             psql_db: {
@@ -253,7 +253,7 @@ export default {
         }
       },
       {
-        title: 'With disabled',
+        title: 'disabled',
         value: {
           databases: {
             psql_db: {

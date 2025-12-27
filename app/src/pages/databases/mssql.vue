@@ -194,7 +194,7 @@ export default {
         }
       },
       {
-        title: 'With archive',
+        title: 'archive',
         value: {
           databases: {
             mssql_db: {
@@ -205,7 +205,7 @@ export default {
         }
       },
       {
-        title: 'With docker',
+        title: 'docker',
         value: {
           databases: {
             mssql_db: {
@@ -219,7 +219,7 @@ export default {
         }
       },
       {
-        title: 'With shell',
+        title: 'shell',
         value: {
           databases: {
             mssql_db: {
@@ -234,7 +234,7 @@ export default {
         }
       },
       {
-        title: 'With encrypt',
+        title: 'encrypt',
         value: {
           databases: {
             mssql_db: {
@@ -249,7 +249,23 @@ export default {
         }
       },
       {
-        title: 'With All',
+        title: 'include tables',
+        value: {
+          databases: {
+            mssql_db: {
+              ...this.configBase,
+              options: {
+                inc_table: [
+                  'table_1',
+                  'table_2',
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        title: 'All',
         value: {
           databases: {
             mssql_db: {
@@ -274,7 +290,7 @@ export default {
         }
       },
       {
-        title: 'With disabled',
+        title: 'disabled',
         value: {
           databases: {
             mssql_db: {

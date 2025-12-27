@@ -127,7 +127,7 @@ export default {
         }
       },
       {
-        title: 'with remote cfg',
+        title: 'remote cfg',
         value: {
           servers: {
             server_one: {
@@ -139,7 +139,7 @@ export default {
         }
       },
       {
-        title: 'with shell',
+        title: 'shell',
         value: {
           servers: {
             server_one: {

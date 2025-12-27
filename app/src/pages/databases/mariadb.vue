@@ -185,7 +185,7 @@ export default {
         }
       },
       {
-        title: 'With archive',
+        title: 'archive',
         value: {
           databases: {
             mysql_db: {
@@ -196,7 +196,7 @@ export default {
         }
       },
       {
-        title: 'With docker',
+        title: 'docker',
         value: {
           databases: {
             mysql_db: {
@@ -210,7 +210,7 @@ export default {
         }
       },
       {
-        title: 'With shell',
+        title: 'shell',
         value: {
           databases: {
             mysql_db: {
@@ -225,7 +225,7 @@ export default {
         }
       },
       {
-        title: 'With encrypt',
+        title: 'encrypt',
         value: {
           databases: {
             mysql_db: {
@@ -240,49 +240,99 @@ export default {
         }
       },
       {
-        title: 'With All',
+        title: 'include tables',
         value: {
           databases: {
             mysql_db: {
               ...this.configBase,
-              archive: true,
-              docker: {
-                enabled: true,
-                command: "docker compose --file /var/www/docker-compose.yaml exec -T mariadb"
-              },
-              shell: {
-                enabled: true,
-                after: 'echo "run script before create dump',
-                before: 'echo "run script after create dump',
-              },
-              encrypt: {
-                enabled: true,
-                type: 'aes',
-                password: '123456',
+              options: {
+                inc_table: [
+                  'table_1',
+                  'table_2',
+                ]
               }
             }
           }
         }
       },
       {
-        title: 'With disabled',
+        title: 'exclude tables',
         value: {
           databases: {
             mysql_db: {
               ...this.configBase,
-              archive: false,
-              docker: {
-                enabled: false,
-              },
-              shell: {
-                enabled: false,
-              },
-              encrypt: {
-                enabled: false,
+              options: {
+                exc_table: [
+                  'table_1',
+                  'table_2',
+                ]
               }
             }
           }
         }
+      },
+      {
+        title: 'All',
+        value:
+          {
+            databases: {
+              mysql_db: {
+                ...
+                  this.configBase,
+                archive:
+                  true,
+                docker:
+                  {
+                    enabled: true,
+                    command:
+                      "docker compose --file /var/www/docker-compose.yaml exec -T mariadb"
+                  }
+                ,
+                shell: {
+                  enabled: true,
+                  after:
+                    'echo "run script before create dump',
+                  before:
+                    'echo "run script after create dump',
+                }
+                ,
+                encrypt: {
+                  enabled: true,
+                  type:
+                    'aes',
+                  password:
+                    '123456',
+                }
+              }
+            }
+          }
+      }
+      ,
+      {
+        title: 'disabled',
+        value:
+          {
+            databases: {
+              mysql_db: {
+                ...
+                  this.configBase,
+                archive:
+                  false,
+                docker:
+                  {
+                    enabled: false,
+                  }
+                ,
+                shell: {
+                  enabled: false,
+                }
+                ,
+                encrypt: {
+                  enabled: false,
+                }
+              }
+            }
+          }
       }
     ]
   },
