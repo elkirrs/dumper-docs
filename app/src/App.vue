@@ -7,12 +7,17 @@
       <v-spacer v-if="isMobile"></v-spacer>
 
       <div :class="!isMobile ? 'pa-16' : 'd-flex justify-center'">
-        <v-img
-          :width="isMobile ? 100 : 135"
-          aspect-ratio="16/9"
-          cover
-          src="/dumper.svg"
-        ></v-img>
+        <a
+          href="/"
+          rel="noopener"
+        >
+          <v-img
+            :width="isMobile ? 100 : 135"
+            aspect-ratio="16/9"
+            cover
+            src="/dumper.svg"
+          ></v-img>
+        </a>
       </div>
 
       <v-spacer></v-spacer>
