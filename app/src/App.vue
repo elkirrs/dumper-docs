@@ -8,7 +8,7 @@
 
       <div :class="!isMobile ? 'pa-16' : 'd-flex justify-center'">
         <a
-          href="/"
+          href="/dumper/"
           rel="noopener"
         >
           <v-img
