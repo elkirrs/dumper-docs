@@ -14,7 +14,7 @@ declare module 'vue' {
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     Chip: typeof import('./src/components/Chip.vue')['default']
     List: typeof import('./src/components/List.vue')['default']
-    Restore: typeof import('./src/components/Restore.vue')['default']
+    RequiredTool: typeof import('./src/components/RequiredTool.vue')['default']
     RestoreDatabase: typeof import('./src/components/RestoreDatabase.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

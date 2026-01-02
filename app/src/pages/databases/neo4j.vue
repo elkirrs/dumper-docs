@@ -41,9 +41,9 @@ export default {
   components: {RestoreDatabase},
   data() {
     return {
-      driver: "mariadb",
-      database: "MariaDB",
-      utility: ['mariadb-dump'],
+      driver: "neo4j",
+      database: "Neo4j Graph",
+      utility: ['neo4j-admin'],
       snackbar: false,
       configKeys: [
         {
@@ -60,14 +60,6 @@ export default {
           required: true,
           info: {text: '', link: ''}
         },
-        {key: "user", value: "Database username", type: "string", required: true, info: {text: '', link: ''}},
-        {
-          key: "password",
-          value: "Database user's password",
-          type: "string",
-          required: true,
-          info: {text: '', link: ''}
-        },
         {
           key: "server",
           value: "The link to the server from the servers section list",
@@ -75,14 +67,13 @@ export default {
           required: true,
           info: {text: '', link: ''}
         },
-        {key: "port", value: "Database connection port", type: "integer", required: true, info: {text: '', link: ''}},
         {key: "driver", value: "Driver database", type: "string", required: true, info: {text: '', link: ''}},
         {
           key: "format",
           value: "Database dump format",
           type: "string",
           required: true,
-          info: {text: 'Format list: "sql"', link: ''}
+          info: {text: 'Format list: "dump"', link: ''}
         },
         {
           key: "archive",
@@ -128,18 +119,6 @@ export default {
           info: {text: '', link: ''},
           sub: [
             {key: 'source', value: "Full path to dump util", type: "string", required: false},
-            {
-              key: 'inc_tables',
-              value: "Create a table dump include only tables from this list.",
-              type: "array",
-              required: false
-            },
-            {
-              key: 'exc_tables',
-              value: "Create a table dump, excluding tables from this list",
-              type: "array",
-              required: false
-            },
           ],
         },
         {
@@ -155,21 +134,21 @@ export default {
       ],
       yamlConfig: [],
       restoreDatabase: [
-        {title: 'Use this command to restore database:', value: '$ mariadb -u root -p my_db < backup.sql'},
+        {
+          title: 'Use this command to restore database:',
+          value: '$ neo4j-admin database load neo4j --from-path=/var/lib/neo4j/dumps --overwrite-destination'
+        },
       ],
     }
   },
   computed: {
     configBase() {
       return {
-        title: "My DB MariaDB",
-        name: "mydb",
-        user: "myuser",
-        password: "mypassword",
-        port: 3306,
+        title: "My Neo4j DB",
+        name: "neo4j",
         driver: this.driver,
-        server: "srv-maria-db",
-        format: "sql",
+        server: "srv-neo4j",
+        format: "dump",
         storages: ["sftp", 'local'],
         remove_dump: true,
       }
@@ -181,7 +160,7 @@ export default {
         title: 'Default',
         value: {
           databases: {
-            mysql_db: {
+            neo4j_db: {
               ...this.configBase,
             }
           }
@@ -191,7 +170,7 @@ export default {
         title: 'archive',
         value: {
           databases: {
-            mysql_db: {
+            neo4j_db: {
               ...this.configBase,
               archive: true
             }
@@ -202,11 +181,11 @@ export default {
         title: 'docker',
         value: {
           databases: {
-            mysql_db: {
+            neo4j_db: {
               ...this.configBase,
               docker: {
                 enabled: true,
-                command: "docker compose --file /var/www/docker-compose.yaml exec -T mariadb"
+                command: "docker compose --file /var/www/docker-compose.yaml exec -T neo4j"
               }
             }
           }
@@ -216,12 +195,12 @@ export default {
         title: 'shell',
         value: {
           databases: {
-            mysql_db: {
+            neo4j_db: {
               ...this.configBase,
               shell: {
                 enabled: true,
-                after: 'echo "run script before create dump',
-                before: 'echo "run script after create dump',
+                after: 'sudo systemctl start neo4j',
+                before: 'sudo systemctl stop neo4j',
               }
             }
           }
@@ -231,7 +210,7 @@ export default {
         title: 'encrypt',
         value: {
           databases: {
-            mysql_db: {
+            neo4j_db: {
               ...this.configBase,
               encrypt: {
                 enabled: true,
@@ -243,43 +222,11 @@ export default {
         }
       },
       {
-        title: 'include tables',
-        value: {
-          databases: {
-            mysql_db: {
-              ...this.configBase,
-              options: {
-                inc_table: [
-                  'table_1',
-                  'table_2',
-                ]
-              }
-            }
-          }
-        }
-      },
-      {
-        title: 'exclude tables',
-        value: {
-          databases: {
-            mysql_db: {
-              ...this.configBase,
-              options: {
-                exc_table: [
-                  'table_1',
-                  'table_2',
-                ]
-              }
-            }
-          }
-        }
-      },
-      {
         title: 'All',
         value:
           {
             databases: {
-              mysql_db: {
+              neo4j_db: {
                 ...
                   this.configBase,
                 archive:
@@ -288,15 +235,15 @@ export default {
                   {
                     enabled: true,
                     command:
-                      "docker compose --file /var/www/docker-compose.yaml exec -T mariadb"
+                      "docker compose --file /var/www/docker-compose.yaml exec -T neo4j"
                   }
                 ,
                 shell: {
                   enabled: true,
                   after:
-                    'echo "run script before create dump',
+                    'sudo systemctl start neo4j',
                   before:
-                    'echo "run script after create dump',
+                    'sudo systemctl stop neo4j',
                 }
                 ,
                 encrypt: {
@@ -316,7 +263,7 @@ export default {
         value:
           {
             databases: {
-              mysql_db: {
+              neo4j_db: {
                 ...
                   this.configBase,
                 archive:

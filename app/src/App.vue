@@ -156,7 +156,7 @@ const storages = [
   ["FTP", "/storages/ftp"],
   ["Azure", "/storages/azure"],
   ["Amazon S3", "/storages/s3"],
-]
+].sort((a, b) => a[0].localeCompare(b[0]))
 
 const databases = [
   ["Postgres", "/databases/psql"],
@@ -166,12 +166,14 @@ const databases = [
   ["Microsoft SQL", "/databases/mssql"],
   ["SQLite", "/databases/sqlite"],
   ["Redis", "/databases/redis"],
-]
+  ["Neo4j Graph", "/databases/neo4j"],
+  ["Amazon DynamoDB", "/databases/dynamodb"],
+].sort((a, b) => a[0].localeCompare(b[0]))
 
 const crypt = [
   ["Config", "/crypt/config"],
   ["Database", "/crypt/database"],
-]
+].sort((a, b) => a[0].localeCompare(b[0]))
 
 watch(
   () => route.path,

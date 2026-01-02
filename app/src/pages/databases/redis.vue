@@ -6,9 +6,12 @@
 
   <div class="pb-5">
     <v-alert border="start" variant="text" density="compact">
-      Dumper uses
-      <Chip :items="utility"/>
-      utility to backup {{ database }} database
+      <p>
+        Dumper uses
+        <Chip :items="utility"/>
+        utility to backup {{ database }} database.
+      </p>
+      <p>The first step is to install the utility to create a database dump for your env.</p>
     </v-alert>
   </div>
 
@@ -40,7 +43,7 @@ export default {
     return {
       driver: "redis",
       database: "Redis",
-      utility: ['redis'],
+      utility: ['redis-cli'],
       snackbar: false,
       configKeys: [
         {

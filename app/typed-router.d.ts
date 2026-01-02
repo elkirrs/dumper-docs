@@ -21,10 +21,12 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/crypt/config': RouteRecordInfo<'/crypt/config', '/crypt/config', Record<never, never>, Record<never, never>>,
     '/crypt/database': RouteRecordInfo<'/crypt/database', '/crypt/database', Record<never, never>, Record<never, never>>,
+    '/databases/dynamodb': RouteRecordInfo<'/databases/dynamodb', '/databases/dynamodb', Record<never, never>, Record<never, never>>,
     '/databases/mariadb': RouteRecordInfo<'/databases/mariadb', '/databases/mariadb', Record<never, never>, Record<never, never>>,
     '/databases/mongodb': RouteRecordInfo<'/databases/mongodb', '/databases/mongodb', Record<never, never>, Record<never, never>>,
     '/databases/mssql': RouteRecordInfo<'/databases/mssql', '/databases/mssql', Record<never, never>, Record<never, never>>,
     '/databases/mysql': RouteRecordInfo<'/databases/mysql', '/databases/mysql', Record<never, never>, Record<never, never>>,
+    '/databases/neo4j': RouteRecordInfo<'/databases/neo4j', '/databases/neo4j', Record<never, never>, Record<never, never>>,
     '/databases/psql': RouteRecordInfo<'/databases/psql', '/databases/psql', Record<never, never>, Record<never, never>>,
     '/databases/redis': RouteRecordInfo<'/databases/redis', '/databases/redis', Record<never, never>, Record<never, never>>,
     '/databases/sqlite': RouteRecordInfo<'/databases/sqlite', '/databases/sqlite', Record<never, never>, Record<never, never>>,
@@ -65,6 +67,10 @@ declare module 'vue-router/auto-routes' {
       routes: '/crypt/database'
       views: never
     }
+    'src/pages/databases/dynamodb.vue': {
+      routes: '/databases/dynamodb'
+      views: never
+    }
     'src/pages/databases/mariadb.vue': {
       routes: '/databases/mariadb'
       views: never
@@ -79,6 +85,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/databases/mysql.vue': {
       routes: '/databases/mysql'
+      views: never
+    }
+    'src/pages/databases/neo4j.vue': {
+      routes: '/databases/neo4j'
       views: never
     }
     'src/pages/databases/psql.vue': {
