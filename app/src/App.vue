@@ -156,6 +156,7 @@ const storages = [
   ["FTP", "/storages/ftp"],
   ["Azure", "/storages/azure"],
   ["Amazon S3", "/storages/s3"],
+  ["MinIO", "/storages/minio"],
 ].sort((a, b) => a[0].localeCompare(b[0]))
 
 const databases = [
