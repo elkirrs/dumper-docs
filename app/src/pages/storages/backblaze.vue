@@ -88,7 +88,7 @@ export default {
   computed: {
     configBase() {
       return {
-        cloudflare_storage: {
+        backblaze_storage: {
           type: "b2",
           dir: "dumps",
           region: 'us-east-001',
