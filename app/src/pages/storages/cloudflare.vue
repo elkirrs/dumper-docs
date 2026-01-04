@@ -28,8 +28,8 @@
 export default {
   data() {
     return {
-      provider: "MinIO",
-      typeKey: ['type: minio'],
+      provider: "Cloudflare R2",
+      typeKey: ['type: r2'],
       snackbar: false,
       configKeys: [
         {
@@ -48,9 +48,9 @@ export default {
         },
         {
           key: "region",
-          value: "The region where your MinIO bucket is located",
+          value: "The region where your Cloudflare bucket is located",
           type: "string",
-          required: true,
+          required: false,
           info: {text: '', link: ''}
         },
         {
@@ -69,7 +69,14 @@ export default {
         },
         {
           key: "bucket",
-          value: "The name of your MinIO Bucket container where the files will be stored.",
+          value: "The name of your Cloudflare Bucket container where the files will be stored",
+          type: "string",
+          required: true,
+          info: {text: '', link: ''}
+        },
+        {
+          key: "account_id",
+          value: "Cloudflare Account Id",
           type: "string",
           required: true,
           info: {text: '', link: ''}
@@ -88,14 +95,14 @@ export default {
   computed: {
     configBase() {
       return {
-        minio_storage: {
-          type: "minio",
+        cloudflare_storage: {
+          type: "r2",
           dir: "dumps",
-          region: "us-east-1",
           access_key: "AKIAEXAMPLEACCESSKEY",
           secret_key: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
           bucket: "dumper",
-          endpoint: "https://dumper.us-east-1.minio-server.net"
+          account_id: "dumper-cli",
+          endpoint: "https://dumper-cli.r2.cloudflarestorage.com"
         }
       }
     }

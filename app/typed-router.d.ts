@@ -36,6 +36,8 @@ declare module 'vue-router/auto-routes' {
     '/settings': RouteRecordInfo<'/settings', '/settings', Record<never, never>, Record<never, never>>,
     '/shell': RouteRecordInfo<'/shell', '/shell', Record<never, never>, Record<never, never>>,
     '/storages/azure': RouteRecordInfo<'/storages/azure', '/storages/azure', Record<never, never>, Record<never, never>>,
+    '/storages/backblaze': RouteRecordInfo<'/storages/backblaze', '/storages/backblaze', Record<never, never>, Record<never, never>>,
+    '/storages/cloudflare': RouteRecordInfo<'/storages/cloudflare', '/storages/cloudflare', Record<never, never>, Record<never, never>>,
     '/storages/ftp': RouteRecordInfo<'/storages/ftp', '/storages/ftp', Record<never, never>, Record<never, never>>,
     '/storages/local': RouteRecordInfo<'/storages/local', '/storages/local', Record<never, never>, Record<never, never>>,
     '/storages/minio': RouteRecordInfo<'/storages/minio', '/storages/minio', Record<never, never>, Record<never, never>>,
@@ -126,6 +128,14 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/storages/azure.vue': {
       routes: '/storages/azure'
+      views: never
+    }
+    'src/pages/storages/backblaze.vue': {
+      routes: '/storages/backblaze'
+      views: never
+    }
+    'src/pages/storages/cloudflare.vue': {
+      routes: '/storages/cloudflare'
       views: never
     }
     'src/pages/storages/ftp.vue': {

@@ -1,7 +1,7 @@
 <template>
 
   <div class="pb-5">
-    <h2>FTP</h2>
+    <h2>{{ this.provider }}</h2>
   </div>
 
   <div class="pb-5">
@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+      provider: "FTP",
       typeKey: ['type: ftp'],
       snackbar: false,
       configKeys: [
@@ -40,7 +41,7 @@ export default {
         },
         {
           key: "dir",
-          value: "Using creating a backup with docker",
+          value: "Remote dir for save dump file",
           type: "string",
           required: true,
           info: {text: '', link: ''}

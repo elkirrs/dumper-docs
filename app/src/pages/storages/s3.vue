@@ -1,12 +1,12 @@
 <template>
 
   <div class="pb-5">
-    <h2>Amazon S3</h2>
+    <h2>{{ this.provider }}</h2>
   </div>
 
   <div class="pb-5">
     <v-alert border="start" variant="text" density="compact">
-      Uploading a file to the s3 storage
+      Uploading a file to the {{ this.provider }} storage
     </v-alert>
   </div>
 
@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+      provider: "Amazon S3",
       typeKey: ['type: s3'],
       snackbar: false,
       configKeys: [
@@ -39,8 +40,15 @@ export default {
           info: {text: '', link: ''}
         },
         {
+          key: "dir",
+          value: "Remote dir for save dump file",
+          type: "string",
+          required: false,
+          info: {text: '', link: ''}
+        },
+        {
           key: "region",
-          value: "The AWS region where your S3 bucket is located",
+          value: "The region where your S3 bucket is located",
           type: "string",
           required: true,
           info: {text: '', link: ''}
@@ -64,6 +72,13 @@ export default {
           value: "The name of your S3 Bucket container where the files will be stored.",
           type: "string",
           required: true,
+          info: {text: '', link: ''}
+        },
+        {
+          key: "endpoint",
+          value: "Special endpoint to connect storage.",
+          type: "string",
+          required: false,
           info: {text: '', link: ''}
         },
       ],

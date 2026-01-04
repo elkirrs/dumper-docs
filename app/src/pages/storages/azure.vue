@@ -1,12 +1,12 @@
 <template>
 
   <div class="pb-5">
-    <h2>Azure</h2>
+    <h2>{{ this.provider }}</h2>
   </div>
 
   <div class="pb-5">
     <v-alert border="start" variant="text" density="compact">
-      Uploading a file to the azure blob storage
+      Uploading a file to the {{ this.provider }} storage
     </v-alert>
   </div>
 
@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+      provider: "Azure blob",
       typeKey: ['type: azure'],
       snackbar: false,
       configKeys: [

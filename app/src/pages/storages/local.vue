@@ -1,12 +1,12 @@
 <template>
 
   <div class="pb-5">
-    <h2>Local</h2>
+    <h2>{{ this.provider }}</h2>
   </div>
 
   <div class="pb-5">
     <v-alert border="start" variant="text" density="compact">
-      Uploading a file to the local machine where dumper is running
+      Uploading a file to the {{ this.provider }} machine where dumper is running
     </v-alert>
   </div>
 
@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+      provider: "Local",
       typeKey: ['type: local'],
       snackbar: false,
       configKeys: [
@@ -40,7 +41,7 @@ export default {
         },
         {
           key: "dir",
-          value: "Using creating a backup with docker",
+          value: "Local dir for save dump file",
           type: "string",
           required: true,
           info: {text: '', link: ''}

@@ -28,8 +28,8 @@
 export default {
   data() {
     return {
-      provider: "MinIO",
-      typeKey: ['type: minio'],
+      provider: "Backblaze B2",
+      typeKey: ['type: b2'],
       snackbar: false,
       configKeys: [
         {
@@ -48,7 +48,7 @@ export default {
         },
         {
           key: "region",
-          value: "The region where your MinIO bucket is located",
+          value: "The region where your Backblaze bucket is located",
           type: "string",
           required: true,
           info: {text: '', link: ''}
@@ -69,7 +69,7 @@ export default {
         },
         {
           key: "bucket",
-          value: "The name of your MinIO Bucket container where the files will be stored.",
+          value: "The name of your Backblaze Bucket container where the files will be stored",
           type: "string",
           required: true,
           info: {text: '', link: ''}
@@ -88,14 +88,14 @@ export default {
   computed: {
     configBase() {
       return {
-        minio_storage: {
-          type: "minio",
+        cloudflare_storage: {
+          type: "b2",
           dir: "dumps",
-          region: "us-east-1",
+          region: 'us-east-001',
           access_key: "AKIAEXAMPLEACCESSKEY",
           secret_key: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
           bucket: "dumper",
-          endpoint: "https://dumper.us-east-1.minio-server.net"
+          endpoint: "https://dumper.s3.us-east-001.backblazeb2.com"
         }
       }
     }
