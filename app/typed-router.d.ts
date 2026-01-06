@@ -38,7 +38,9 @@ declare module 'vue-router/auto-routes' {
     '/storages/azure': RouteRecordInfo<'/storages/azure', '/storages/azure', Record<never, never>, Record<never, never>>,
     '/storages/backblaze': RouteRecordInfo<'/storages/backblaze', '/storages/backblaze', Record<never, never>, Record<never, never>>,
     '/storages/cloudflare': RouteRecordInfo<'/storages/cloudflare', '/storages/cloudflare', Record<never, never>, Record<never, never>>,
+    '/storages/digital-ocean': RouteRecordInfo<'/storages/digital-ocean', '/storages/digital-ocean', Record<never, never>, Record<never, never>>,
     '/storages/ftp': RouteRecordInfo<'/storages/ftp', '/storages/ftp', Record<never, never>, Record<never, never>>,
+    '/storages/google': RouteRecordInfo<'/storages/google', '/storages/google', Record<never, never>, Record<never, never>>,
     '/storages/local': RouteRecordInfo<'/storages/local', '/storages/local', Record<never, never>, Record<never, never>>,
     '/storages/minio': RouteRecordInfo<'/storages/minio', '/storages/minio', Record<never, never>, Record<never, never>>,
     '/storages/s3': RouteRecordInfo<'/storages/s3', '/storages/s3', Record<never, never>, Record<never, never>>,
@@ -138,8 +140,16 @@ declare module 'vue-router/auto-routes' {
       routes: '/storages/cloudflare'
       views: never
     }
+    'src/pages/storages/digital-ocean.vue': {
+      routes: '/storages/digital-ocean'
+      views: never
+    }
     'src/pages/storages/ftp.vue': {
       routes: '/storages/ftp'
+      views: never
+    }
+    'src/pages/storages/google.vue': {
+      routes: '/storages/google'
       views: never
     }
     'src/pages/storages/local.vue': {

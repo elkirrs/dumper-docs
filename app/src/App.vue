@@ -159,6 +159,8 @@ const storages = [
   ["MinIO", "/storages/minio"],
   ["Cloudflare R2", "/storages/cloudflare"],
   ["Backblaze B2", "/storages/backblaze"],
+  ["DigitalOcean Spaces", "/storages/digital-ocean"],
+  ["Google Cloud Storage", "/storages/google"],
 ].sort((a, b) => a[0].localeCompare(b[0]))
 
 const databases = [
