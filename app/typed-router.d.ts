@@ -45,6 +45,7 @@ declare module 'vue-router/auto-routes' {
     '/storages/minio': RouteRecordInfo<'/storages/minio', '/storages/minio', Record<never, never>, Record<never, never>>,
     '/storages/s3': RouteRecordInfo<'/storages/s3', '/storages/s3', Record<never, never>, Record<never, never>>,
     '/storages/sftp': RouteRecordInfo<'/storages/sftp', '/storages/sftp', Record<never, never>, Record<never, never>>,
+    '/storages/yandex': RouteRecordInfo<'/storages/yandex', '/storages/yandex', Record<never, never>, Record<never, never>>,
     '/template': RouteRecordInfo<'/template', '/template', Record<never, never>, Record<never, never>>,
     '/timelines': RouteRecordInfo<'/timelines', '/timelines', Record<never, never>, Record<never, never>>,
   }
@@ -166,6 +167,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/storages/sftp.vue': {
       routes: '/storages/sftp'
+      views: never
+    }
+    'src/pages/storages/yandex.vue': {
+      routes: '/storages/yandex'
       views: never
     }
     'src/pages/template.vue': {

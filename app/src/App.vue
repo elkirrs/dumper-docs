@@ -161,6 +161,7 @@ const storages = [
   ["Backblaze B2", "/storages/backblaze"],
   ["DigitalOcean Spaces", "/storages/digital-ocean"],
   ["Google Cloud Storage", "/storages/google"],
+  ["Yandex Cloud", "/storages/yandex"],
 ].sort((a, b) => a[0].localeCompare(b[0]))
 
 const databases = [
