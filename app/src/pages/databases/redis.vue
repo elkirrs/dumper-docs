@@ -143,7 +143,10 @@ export default {
       restoreDatabase: [
         {
           title: 'Use this command to restore database:',
-          value: '$ systemctl stop redis && cp /path/to/backup/dump.rdb /var/lib/redis/dump.rdb && chown redis:redis /var/lib/redis/dump.rdb && systemctl start redis'
+          value: '$ systemctl stop redis \\ \n'
+           + ' && cp /path/to/backup/dump.rdb /var/lib/redis/dump.rdb \\ \n'
+           + ' && chown redis:redis /var/lib/redis/dump.rdb \\ \n'
+           + ' && systemctl start redis'
         },
       ],
     }

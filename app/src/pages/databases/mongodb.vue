@@ -12,6 +12,7 @@
         utility to backup {{ database }} database.
       </p>
       <p>The first step is to install the utility to create a database dump for your env.</p>
+      <p>The final backup file will always be archived.</p>
     </v-alert>
   </div>
 

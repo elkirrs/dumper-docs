@@ -12,6 +12,14 @@
         utility to backup {{ database }} database.
       </p>
       <p>The first step is to install the utility to create a database dump for your env.</p>
+      <p>The final backup file will always be archived.</p>
+    </v-alert>
+  </div>
+
+  <div class="pb-5">
+    <v-alert variant="text" type="warning" density="compact">
+      <p>
+        If you are using docker, you must have a backup path similar to the path to the server.</p>
     </v-alert>
   </div>
 
@@ -41,9 +49,9 @@ export default {
   components: {RestoreDatabase},
   data() {
     return {
-      driver: "dynamodb",
-      database: "Amazon DynamoDB",
-      utility: ['aws'],
+      driver: "influxdb",
+      database: "Influx Data",
+      utility: ['influx'],
       snackbar: false,
       configKeys: [
         {
@@ -55,7 +63,7 @@ export default {
         },
         {
           key: "name",
-          value: "Database name (DynamoDB table name)",
+          value: "Database name",
           type: "string",
           required: true,
           info: {text: '', link: ''}
@@ -67,20 +75,33 @@ export default {
           required: true,
           info: {text: '', link: ''}
         },
-        {key: "driver", value: "Driver database", type: "string", required: true, info: {text: '', link: ''}},
+        {
+          key: "driver",
+          value: "Driver database",
+          type: "string",
+          required: true,
+          info: {text: 'For version 2.x', link: ''}
+        },
         {
           key: "format",
           value: "Database dump format",
           type: "string",
           required: true,
-          info: {text: 'Format list: "json"', link: ''}
+          info: {text: 'Format list: "tar"', link: ''}
         },
         {
-          key: "archive",
-          value: "Archiving a backup file",
-          type: "boolean",
-          required: false,
-          info: {text: '', link: ''}
+          key: "token",
+          value: "Token auth to database",
+          type: "string",
+          required: true,
+          info: {text: 'For version 2.x', link: ''}
+        },
+        {
+          key: "port",
+          value: "Database connection port",
+          type: "integer",
+          required: true,
+          info: {text: 'For version 2.x', link: ''}
         },
         {
           key: "remove_dump",
@@ -119,9 +140,77 @@ export default {
           info: {text: '', link: ''},
           sub: [
             {key: 'source', value: "Full path to dump util", type: "string", required: false},
-            {key: 'region', value: "AWS region", type: "string", required: false},
-            {key: 'profile', value: "AWS profile name", type: "string", required: false},
-            {key: 'endpoint', value: "Custom endpoint (for local DynamoDB)", type: "string", required: false},
+            {key: 'version', value: "Version Influx DB", type: "string", required: false, info: {text: "Support versions: 2.x, 3.x"}},
+            {
+              key: "org",
+              value: "Organization name",
+              type: "string",
+              required: false,
+              info: {text: 'For version 2.x', link: ''}
+            },
+            {
+              key: "org_id",
+              value: "Organization ID",
+              type: "string",
+              required: false,
+              info: {text: 'For version 2.x', link: ''}
+            },
+            {
+              key: "bucket",
+              value: "Bucket name",
+              type: "string",
+              required: false,
+              info: {text: 'For version 2.x', link: '',}
+            },
+            {
+              key: "bucket_id",
+              value: "Bucket ID",
+              type: "string",
+              required: false,
+              info: {text: 'For version 2.x', link: '',}
+            },
+            {
+              key: 'skip-verify',
+              value: "Skip the TLS certificate verification",
+              type: "boolean",
+              required: false,
+              info: {text: 'For version 2.x', link: ''}
+            },
+            {
+              key: 'start',
+              value: "Start time range",
+              type: "string",
+              required: false,
+              info: {text: 'For version 2.x', link: ''}
+            },
+            {
+              key: 'end',
+              value: "End time range",
+              type: "string",
+              required: false,
+              info: {text: 'For version 2.x', link: ''}
+            },
+            {
+              key: 'filter',
+              value: "Filtered data",
+              type: "string",
+              required: false,
+              info: {text: 'For version 2.x'}
+            },
+            {
+              key: 'data_dir',
+              value: "Path to data Influx DB",
+              type: "string",
+              required: true,
+              info: {text: 'For version 3.x'}
+            },
+            {
+              key: 'node_id',
+              value: "Name node influx DB",
+              type: "string",
+              required: true,
+              info: {text: 'For version 3.x'}
+            },
           ],
         },
         {
@@ -138,29 +227,34 @@ export default {
       yamlConfig: [],
       restoreDatabase: [
         {
-          title: 'Use this command to restore database (need prepare dump file for right format).' +
-            ' You can use run scrypt after dump for prepare file dump to right format',
-          value: '$ aws dynamodb batch-write-item' +
-            '  --request-items file:///root/dump/dynamo_Users_2026_01_02.json' +
-            '  --endpoint-url http://localhost:8000'
+          title: 'Use this command to restore database for version 2.x',
+          value: '$ influx restore /backups/2020-01-20_12-00/'
         },
         {
-          title: "Use this command to restore database (cloud)",
-          value: "$ aws dynamodb restore-table-from-backup" +
-            "  --target-table-name UsersRestored" +
-            "  --backup-arn arn:aws:dynamodb:REGION:ACCOUNT_ID:table/Users/backup/xxxxxxxxxx"
-        }
+          title: 'Use this command to restore database for version 3.x',
+          value: '$ systemctl stop influxdb3  \\ \n'
+           + ' && rm -rf ${DATA_DIR}/${NODE_ID}/* \\ \n'
+           + ' && mkdir -p ${DATA_DIR}/${NODE_ID} \\ \n'
+           + ' && cp ${BACKUP_DIR}/_catalog_checkpoint ${DATA_DIR}/${NODE_ID}/ \\ \n'
+           + ' && cp -r ${BACKUP_DIR}/catalog ${DATA_DIR}/${NODE_ID}/ \\ \n'
+           + ' && cp -r ${BACKUP_DIR}/wal ${DATA_DIR}/${NODE_ID}/ \\ \n'
+           + ' && cp -r ${BACKUP_DIR}/dbs ${DATA_DIR}/${NODE_ID}/ \\ \n'
+           + ' && cp -r ${BACKUP_DIR}/snapshots ${DATA_DIR}/${NODE_ID}/ \\ \n'
+           + ' && chown -R influxdb:influxdb ${DATA_DIR}/${NODE_ID} \\ \n'
+           + ' && systemctl start influxdb3'
+        },
       ],
     }
   },
   computed: {
     configBase() {
       return {
-        title: "My Neo4j DB",
-        name: "neo4j",
+        title: "Influx DB",
+        name: "influx",
         driver: this.driver,
-        server: "srv-neo4j",
-        format: "dump",
+        server: "srv-influx",
+        format: "tar",
+        token: "your_token",
         storages: ["sftp", 'local'],
         remove_dump: true,
       }
@@ -172,7 +266,7 @@ export default {
         title: 'Default',
         value: {
           databases: {
-            neo4j_db: {
+            influx_db: {
               ...this.configBase,
             }
           }
@@ -182,7 +276,7 @@ export default {
         title: 'archive',
         value: {
           databases: {
-            neo4j_db: {
+            influx_db: {
               ...this.configBase,
               archive: true
             }
@@ -193,11 +287,11 @@ export default {
         title: 'docker',
         value: {
           databases: {
-            neo4j_db: {
+            influx_db: {
               ...this.configBase,
               docker: {
                 enabled: true,
-                command: "docker compose --file /var/www/docker-compose.yaml exec -T neo4j"
+                command: "docker compose --file /var/www/docker-compose.yaml exec -T influxdb"
               }
             }
           }
@@ -207,12 +301,12 @@ export default {
         title: 'shell',
         value: {
           databases: {
-            neo4j_db: {
+            influx_db: {
               ...this.configBase,
               shell: {
                 enabled: true,
-                after: 'sudo systemctl start neo4j',
-                before: 'sudo systemctl stop neo4j',
+                after: 'command runs after create dump',
+                before: 'command runs before create dump',
               }
             }
           }
@@ -222,7 +316,7 @@ export default {
         title: 'encrypt',
         value: {
           databases: {
-            neo4j_db: {
+            influx_db: {
               ...this.configBase,
               encrypt: {
                 enabled: true,
@@ -238,7 +332,7 @@ export default {
         value:
           {
             databases: {
-              neo4j_db: {
+              influx_db: {
                 ...
                   this.configBase,
                 archive:
@@ -247,15 +341,15 @@ export default {
                   {
                     enabled: true,
                     command:
-                      "docker compose --file /var/www/docker-compose.yaml exec -T neo4j"
+                      "docker compose --file /var/www/docker-compose.yaml exec -T influxdb"
                   }
                 ,
                 shell: {
                   enabled: true,
                   after:
-                    'sudo systemctl start neo4j',
+                    'command runs after create dump',
                   before:
-                    'sudo systemctl stop neo4j',
+                    'command runs before create dump',
                 }
                 ,
                 encrypt: {
@@ -275,7 +369,7 @@ export default {
         value:
           {
             databases: {
-              neo4j_db: {
+              influx_db: {
                 ...
                   this.configBase,
                 archive:

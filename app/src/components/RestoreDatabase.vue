@@ -11,6 +11,7 @@
     <v-alert
       border="start"
       color="dark"
+      class="alert-text"
     >
       {{ item.value }}
     </v-alert>
@@ -60,3 +61,9 @@ export default {
 
 }
 </script>
+
+<style>
+  .alert-text {
+  white-space: pre-line;
+}
+</style>
