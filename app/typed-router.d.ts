@@ -8,6 +8,10 @@
 declare module 'vue-router/auto-routes' {
   import type {
     RouteRecordInfo,
+    ParamValue,
+    ParamValueOneOrMore,
+    ParamValueZeroOrMore,
+    ParamValueZeroOrOne,
   } from 'vue-router'
 
   /**
@@ -17,7 +21,9 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/crypt/config': RouteRecordInfo<'/crypt/config', '/crypt/config', Record<never, never>, Record<never, never>>,
     '/crypt/database': RouteRecordInfo<'/crypt/database', '/crypt/database', Record<never, never>, Record<never, never>>,
+    '/databases/db2': RouteRecordInfo<'/databases/db2', '/databases/db2', Record<never, never>, Record<never, never>>,
     '/databases/dynamodb': RouteRecordInfo<'/databases/dynamodb', '/databases/dynamodb', Record<never, never>, Record<never, never>>,
+    '/databases/influxdb': RouteRecordInfo<'/databases/influxdb', '/databases/influxdb', Record<never, never>, Record<never, never>>,
     '/databases/mariadb': RouteRecordInfo<'/databases/mariadb', '/databases/mariadb', Record<never, never>, Record<never, never>>,
     '/databases/mongodb': RouteRecordInfo<'/databases/mongodb', '/databases/mongodb', Record<never, never>, Record<never, never>>,
     '/databases/mssql': RouteRecordInfo<'/databases/mssql', '/databases/mssql', Record<never, never>, Record<never, never>>,
@@ -69,8 +75,16 @@ declare module 'vue-router/auto-routes' {
       routes: '/crypt/database'
       views: never
     }
+    'src/pages/databases/db2.vue': {
+      routes: '/databases/db2'
+      views: never
+    }
     'src/pages/databases/dynamodb.vue': {
       routes: '/databases/dynamodb'
+      views: never
+    }
+    'src/pages/databases/influxdb.vue': {
+      routes: '/databases/influxdb'
       views: never
     }
     'src/pages/databases/mariadb.vue': {

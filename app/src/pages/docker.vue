@@ -47,7 +47,12 @@ export default {
           value: "Command for interactive connect docker container ",
           type: "string",
           required: false,
-          info: {text: '', link: ''}
+          info: {text: '', link: ''},
+          sub: [
+            {key: '{%cmd%}', value: "A variable in the docker command", type: "string", required: false, info: {
+              text: 'Example: docker exec --user db2inst1 db2 bash -c "source /database/config/db2inst1/sqllib/db2profile && {%cmd%}"', link: ''}
+            },
+          ]
         },
       ],
       yamlConfig: [],
@@ -59,6 +64,14 @@ export default {
         docker: {
           enable: true,
           command: "docker compose --file /var/www/docker-compose.yaml exec -T postgres",
+        }
+      }
+    },
+    configCustom() {
+      return {
+        docker: {
+          enable: true,
+          command: 'docker exec --user db2inst1 db2 bash -c "source /database/config/db2inst1/sqllib/db2profile && {%cmd%}"',
         }
       }
     }
@@ -89,6 +102,26 @@ export default {
               storages: ["sftp"],
               remove_dump: true,
               ...this.configBase,
+            }
+          }
+        }
+      },
+      {
+        title: 'with env',
+        value: {
+          databases: {
+            db_two: {
+              title: "My DB IBM Db2 #1",
+              name: "mydb",
+              user: "myuser",
+              password: "mypassword",
+              port: 50000,
+              driver: 'db2',
+              server: "srv-db2",
+              format: "0.db2",
+              storages: ["sftp"],
+              remove_dump: true,
+              ...this.configCustom,
             }
           }
         }
