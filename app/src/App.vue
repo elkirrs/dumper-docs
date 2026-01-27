@@ -176,6 +176,7 @@ const databases = [
   ["Amazon DynamoDB", "/databases/dynamodb"],
   ["Influx DB", "/databases/influxdb"],
   ["IBM Db2", "/databases/db2"],
+  ["Firebird", "/databases/firebird"],
 ].sort((a, b) => a[0].localeCompare(b[0]))
 
 const crypt = [

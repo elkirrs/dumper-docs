@@ -127,7 +127,7 @@ export default {
           required: false,
           info: {text: '', link: ''},
           sub: [
-            {key: 'ssl', value: "SSL", type: "bool", required: false},
+            {key: 'ssl', value: "SSL", type: "boolean", required: false},
             {key: 'source', value: "Full path to dump util", type: "string", required: false},
             {
               key: 'inc_tables',
