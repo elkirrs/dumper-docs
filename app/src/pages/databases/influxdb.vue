@@ -284,6 +284,21 @@ export default {
         }
       },
       {
+        title: 'options',
+        value: {
+          databases: {
+            influx_db: {
+              ...this.configBase,
+              options: {
+                version: "3.x",
+                data_dir: "/var/lib/influxdb/data",
+                node_id: "node0",
+              }
+            }
+          }
+        }
+      },
+      {
         title: 'docker',
         value: {
           databases: {

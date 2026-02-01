@@ -169,6 +169,7 @@ export default {
         format: "0.db2",
         storages: ["sftp", 'local'],
         remove_dump: true,
+        dir_remote: "/database/backup/"
       }
     }
   },

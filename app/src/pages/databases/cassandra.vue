@@ -157,12 +157,13 @@ export default {
     configBase() {
       return {
         title: "Cassandra DB",
-        name: "cassandra",
+        name: "testks",
         driver: this.driver,
         server: "srv-cassandra",
         format: "tar",
         storages: ["sftp", 'local'],
         remove_dump: true,
+        dir_remote: "/opt/cassandra/data/data",
       }
     }
   },

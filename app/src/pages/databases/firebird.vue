@@ -163,11 +163,14 @@
         return {
           title: "Firebird",
           name: "firebird",
+          user: "SYSDBA",
+          password: "password",
           driver: this.driver,
           server: "srv-firebird",
           format: "fbk",
           storages: ["sftp", 'local', 's3'],
           remove_dump: true,
+          dir_remote: "/backups",
         }
       }
     },
@@ -201,6 +204,7 @@
               firebird_db: {
                 ...this.configBase,
                 options: {
+                  path: "/var/lib/firebird/3.0/data/test100mb.fdb",
                   skip_issue: true,
                   fast_and_stable: true,
                   skip_garbage: true,
