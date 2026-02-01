@@ -21,6 +21,7 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/crypt/config': RouteRecordInfo<'/crypt/config', '/crypt/config', Record<never, never>, Record<never, never>>,
     '/crypt/database': RouteRecordInfo<'/crypt/database', '/crypt/database', Record<never, never>, Record<never, never>>,
+    '/databases/cassandra': RouteRecordInfo<'/databases/cassandra', '/databases/cassandra', Record<never, never>, Record<never, never>>,
     '/databases/db2': RouteRecordInfo<'/databases/db2', '/databases/db2', Record<never, never>, Record<never, never>>,
     '/databases/dynamodb': RouteRecordInfo<'/databases/dynamodb', '/databases/dynamodb', Record<never, never>, Record<never, never>>,
     '/databases/firebird': RouteRecordInfo<'/databases/firebird', '/databases/firebird', Record<never, never>, Record<never, never>>,
@@ -74,6 +75,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/crypt/database.vue': {
       routes: '/crypt/database'
+      views: never
+    }
+    'src/pages/databases/cassandra.vue': {
+      routes: '/databases/cassandra'
       views: never
     }
     'src/pages/databases/db2.vue': {

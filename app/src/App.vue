@@ -177,6 +177,7 @@ const databases = [
   ["Influx DB", "/databases/influxdb"],
   ["IBM Db2", "/databases/db2"],
   ["Firebird", "/databases/firebird"],
+  ["Apache Cassandra", "/databases/cassandra"],
 ].sort((a, b) => a[0].localeCompare(b[0]))
 
 const crypt = [
@@ -220,6 +221,4 @@ onMounted(async () => {
 h2 {
   margin: 0;
 }
-
-
 </style>
