@@ -49,9 +49,9 @@ export default {
   components: {RestoreDatabase},
   data() {
     return {
-      driver: "db2",
-      database: "IBM Db2",
-      utility: ['db2'],
+      driver: "cassandra",
+      database: "Apache Cassandra",
+      utility: ['nodetool'],
       snackbar: false,
       configKeys: [
         {
@@ -63,7 +63,7 @@ export default {
         },
         {
           key: "name",
-          value: "Database name",
+          value: "Database name (keyspace name)",
           type: "string",
           required: true,
           info: {text: '', link: ''}
@@ -87,14 +87,7 @@ export default {
           value: "Database dump format",
           type: "string",
           required: true,
-          info: {text: 'Format list: "0.db2"', link: ''}
-        },
-        {
-          key: "port",
-          value: "Database connection port",
-          type: "integer",
-          required: true,
-          info: {text: 'Default port 50000', link: ''}
+          info: {text: 'Format list: "tar"', link: ''}
         },
         {
           key: "remove_dump",
@@ -133,9 +126,7 @@ export default {
           info: {text: '', link: ''},
           sub: [
             {key: 'source', value: "Full path to dump util", type: "string", required: false},
-            {key: 'backup_mode', value: "Backup mode", type: "string", required: false, info: {
-              text: 'List option: "offline", "online". Defailt value: "offline"', link: ""}
-            },
+            {key: 'inc_tables', value: "Create a table dump include only tables from this list", type: "array", required: false},
           ],
         },
         {
@@ -152,24 +143,27 @@ export default {
       yamlConfig: [],
       restoreDatabase: [
         {
-          title: 'Use this command to restore database:',
-          value: '$ db2 restore db appdb'
+          title: 'Use this command to restore database',
+          value: '$ nodetool disableautocompaction testks events  \\ \n'
+           + ' && nodetool truncate testks events \\ \n'
+           + ' && cp snapshots/.../*.db table-dir/ \\ \n'
+           + ' && nodetool refresh testks events \\ \n'
+           + ' && nodetool enableautocompaction testks events'
         },
-      
       ],
     }
   },
   computed: {
     configBase() {
       return {
-        title: "IBM Db2",
-        name: "ibmdb2",
+        title: "Cassandra DB",
+        name: "testks",
         driver: this.driver,
-        server: "srv-db2",
-        format: "0.db2",
+        server: "srv-cassandra",
+        format: "tar",
         storages: ["sftp", 'local'],
         remove_dump: true,
-        dir_remote: "/database/backup/"
+        dir_remote: "/opt/cassandra/data/data",
       }
     }
   },
@@ -179,7 +173,7 @@ export default {
         title: 'Default',
         value: {
           databases: {
-            ibm_db2_db: {
+            cassandra_db: {
               ...this.configBase,
             }
           }
@@ -189,22 +183,9 @@ export default {
         title: 'archive',
         value: {
           databases: {
-            ibm_db2_db: {
+            cassandra_db: {
               ...this.configBase,
               archive: true
-            }
-          }
-        }
-      },
-      {
-        title: 'options',
-        value: {
-          databases: {
-            ibm_db2_db: {
-              ...this.configBase,
-              options: {
-                backup_mode: "online",
-              }
             }
           }
         }
@@ -213,11 +194,11 @@ export default {
         title: 'docker',
         value: {
           databases: {
-            ibm_db2_db: {
+            cassandra_db: {
               ...this.configBase,
               docker: {
                 enabled: true,
-                command: 'docker exec --user db2inst1 db2 bash -c "source /database/config/db2inst1/sqllib/db2profile && {%cmd%}"'
+                command: "docker compose --file /var/www/docker-compose.yaml exec -T cassandra"
               }
             }
           }
@@ -227,7 +208,7 @@ export default {
         title: 'shell',
         value: {
           databases: {
-            ibm_db2_db: {
+            cassandra_db: {
               ...this.configBase,
               shell: {
                 enabled: true,
@@ -242,7 +223,7 @@ export default {
         title: 'encrypt',
         value: {
           databases: {
-            ibm_db2_db: {
+            cassandra_db: {
               ...this.configBase,
               encrypt: {
                 enabled: true,
@@ -258,7 +239,7 @@ export default {
         value:
           {
             databases: {
-              ibm_db2_db: {
+              cassandra_db: {
                 ...
                   this.configBase,
                 archive:
@@ -267,7 +248,7 @@ export default {
                   {
                     enabled: true,
                     command:
-                      "docker compose --file /var/www/docker-compose.yaml exec -T influxdb"
+                      "docker compose --file /var/www/docker-compose.yaml exec -T cassandra"
                   }
                 ,
                 shell: {
@@ -295,7 +276,7 @@ export default {
         value:
           {
             databases: {
-              ibm_db2_db: {
+              cassandra_db: {
                 ...
                   this.configBase,
                 archive:

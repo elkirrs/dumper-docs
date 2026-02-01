@@ -114,7 +114,7 @@ export default {
           info: {text: '', link: ''},
           sub: [
             {key: 'auth_source', value: "Auth source", type: "string", required: false},
-            {key: 'ssl', value: "SSL/TLS", type: "bool", required: false},
+            {key: 'ssl', value: "SSL/TLS", type: "boolean", required: false},
             {key: 'source', value: "Full path to dump util", type: "string", required: false},
             {
               key: 'inc_tables',
