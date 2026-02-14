@@ -10,7 +10,7 @@
       Priority in the global -> server -> database parameters.
       If the global setting is set and you do not need to use script execution
       for one of the databases or the server, you need to set
-      <Chip :items="['shell.enabled = false']"/>
+      <Chip :items="['docker.enabled = false']"/>
     </v-alert>
   </div>
 

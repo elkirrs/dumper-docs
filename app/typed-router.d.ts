@@ -31,6 +31,7 @@ declare module 'vue-router/auto-routes' {
     '/databases/mssql': RouteRecordInfo<'/databases/mssql', '/databases/mssql', Record<never, never>, Record<never, never>>,
     '/databases/mysql': RouteRecordInfo<'/databases/mysql', '/databases/mysql', Record<never, never>, Record<never, never>>,
     '/databases/neo4j': RouteRecordInfo<'/databases/neo4j', '/databases/neo4j', Record<never, never>, Record<never, never>>,
+    '/databases/opensearch': RouteRecordInfo<'/databases/opensearch', '/databases/opensearch', Record<never, never>, Record<never, never>>,
     '/databases/psql': RouteRecordInfo<'/databases/psql', '/databases/psql', Record<never, never>, Record<never, never>>,
     '/databases/redis': RouteRecordInfo<'/databases/redis', '/databases/redis', Record<never, never>, Record<never, never>>,
     '/databases/sqlite': RouteRecordInfo<'/databases/sqlite', '/databases/sqlite', Record<never, never>, Record<never, never>>,
@@ -115,6 +116,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/databases/neo4j.vue': {
       routes: '/databases/neo4j'
+      views: never
+    }
+    'src/pages/databases/opensearch.vue': {
+      routes: '/databases/opensearch'
       views: never
     }
     'src/pages/databases/psql.vue': {
