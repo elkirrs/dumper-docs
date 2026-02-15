@@ -24,6 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/databases/cassandra': RouteRecordInfo<'/databases/cassandra', '/databases/cassandra', Record<never, never>, Record<never, never>>,
     '/databases/db2': RouteRecordInfo<'/databases/db2', '/databases/db2', Record<never, never>, Record<never, never>>,
     '/databases/dynamodb': RouteRecordInfo<'/databases/dynamodb', '/databases/dynamodb', Record<never, never>, Record<never, never>>,
+    '/databases/elasticsearch': RouteRecordInfo<'/databases/elasticsearch', '/databases/elasticsearch', Record<never, never>, Record<never, never>>,
     '/databases/firebird': RouteRecordInfo<'/databases/firebird', '/databases/firebird', Record<never, never>, Record<never, never>>,
     '/databases/influxdb': RouteRecordInfo<'/databases/influxdb', '/databases/influxdb', Record<never, never>, Record<never, never>>,
     '/databases/mariadb': RouteRecordInfo<'/databases/mariadb', '/databases/mariadb', Record<never, never>, Record<never, never>>,
@@ -31,6 +32,7 @@ declare module 'vue-router/auto-routes' {
     '/databases/mssql': RouteRecordInfo<'/databases/mssql', '/databases/mssql', Record<never, never>, Record<never, never>>,
     '/databases/mysql': RouteRecordInfo<'/databases/mysql', '/databases/mysql', Record<never, never>, Record<never, never>>,
     '/databases/neo4j': RouteRecordInfo<'/databases/neo4j', '/databases/neo4j', Record<never, never>, Record<never, never>>,
+    '/databases/opensearch': RouteRecordInfo<'/databases/opensearch', '/databases/opensearch', Record<never, never>, Record<never, never>>,
     '/databases/psql': RouteRecordInfo<'/databases/psql', '/databases/psql', Record<never, never>, Record<never, never>>,
     '/databases/redis': RouteRecordInfo<'/databases/redis', '/databases/redis', Record<never, never>, Record<never, never>>,
     '/databases/sqlite': RouteRecordInfo<'/databases/sqlite', '/databases/sqlite', Record<never, never>, Record<never, never>>,
@@ -89,6 +91,10 @@ declare module 'vue-router/auto-routes' {
       routes: '/databases/dynamodb'
       views: never
     }
+    'src/pages/databases/elasticsearch.vue': {
+      routes: '/databases/elasticsearch'
+      views: never
+    }
     'src/pages/databases/firebird.vue': {
       routes: '/databases/firebird'
       views: never
@@ -115,6 +121,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/databases/neo4j.vue': {
       routes: '/databases/neo4j'
+      views: never
+    }
+    'src/pages/databases/opensearch.vue': {
+      routes: '/databases/opensearch'
       views: never
     }
     'src/pages/databases/psql.vue': {
