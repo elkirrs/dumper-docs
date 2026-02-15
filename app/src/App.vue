@@ -178,7 +178,8 @@ const databases = [
   ["IBM Db2", "/databases/db2"],
   ["Firebird", "/databases/firebird"],
   ["Apache Cassandra", "/databases/cassandra"],
-  ["OpenSearch", "/databases/opensearch"],
+  ["Open Search", "/databases/opensearch"],
+  ["Elastic Search", "/databases/elasticsearch"],
 ].sort((a, b) => a[0].localeCompare(b[0]))
 
 const crypt = [

@@ -49,8 +49,8 @@ export default {
   components: {RestoreDatabase},
   data() {
     return {
-      driver: "opensearch",
-      database: "Open Search",
+      driver: "elastic",
+      database: "Elastic Search",
       utility: ['curl'],
       snackbar: false,
       configKeys: [
@@ -192,14 +192,14 @@ export default {
   computed: {
     configBase() {
       return {
-        title: "OpenSearch DB",
+        title: "Elastic Search DB",
         name: "testks",
         driver: this.driver,
-        server: "srv-opensearch",
+        server: "srv-elasticsearch",
         format: "tar",
         storages: ["sftp", 'local'],
         remove_dump: true,
-        dir_remote: "/opt/opensearch-backups",
+        dir_remote: "/opt/elasticsearch-backups",
       }
     }
   },
@@ -209,7 +209,7 @@ export default {
         title: 'Default',
         value: {
           databases: {
-            opensearch_db: {
+            elasticsearch_db: {
               ...this.configBase,
             }
           }
@@ -219,7 +219,7 @@ export default {
         title: 'archive',
         value: {
           databases: {
-            opensearch_db: {
+            elasticsearch_db: {
               ...this.configBase,
               archive: true
             }
@@ -230,11 +230,11 @@ export default {
         title: 'docker',
         value: {
           databases: {
-            opensearch_db: {
+            elasticsearch_db: {
               ...this.configBase,
               docker: {
                 enabled: true,
-                command: "docker compose --file /var/www/docker-compose.yaml exec -T opensearch"
+                command: "docker compose --file /var/www/docker-compose.yaml exec -T elasticsearch"
               }
             }
           }
@@ -244,7 +244,7 @@ export default {
         title: 'shell',
         value: {
           databases: {
-            opensearch_db: {
+            elasticsearch_db: {
               ...this.configBase,
               shell: {
                 enabled: true,
@@ -259,7 +259,7 @@ export default {
         title: 'encrypt',
         value: {
           databases: {
-            opensearch_db: {
+            elasticsearch_db: {
               ...this.configBase,
               encrypt: {
                 enabled: true,
@@ -275,7 +275,7 @@ export default {
         value:
           {
             databases: {
-              opensearch_db: {
+              elasticsearch_db: {
                 ...
                   this.configBase,
                 archive:
@@ -284,7 +284,7 @@ export default {
                   {
                     enabled: true,
                     command:
-                      "docker compose --file /var/www/docker-compose.yaml exec -T opensearch"
+                      "docker compose --file /var/www/docker-compose.yaml exec -T elasticsearch"
                   }
                 ,
                 shell: {
@@ -312,7 +312,7 @@ export default {
         value:
           {
             databases: {
-              opensearch_db: {
+              elasticsearch_db: {
                 ...
                   this.configBase,
                 archive:

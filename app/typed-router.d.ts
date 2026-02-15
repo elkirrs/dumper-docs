@@ -24,6 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/databases/cassandra': RouteRecordInfo<'/databases/cassandra', '/databases/cassandra', Record<never, never>, Record<never, never>>,
     '/databases/db2': RouteRecordInfo<'/databases/db2', '/databases/db2', Record<never, never>, Record<never, never>>,
     '/databases/dynamodb': RouteRecordInfo<'/databases/dynamodb', '/databases/dynamodb', Record<never, never>, Record<never, never>>,
+    '/databases/elasticsearch': RouteRecordInfo<'/databases/elasticsearch', '/databases/elasticsearch', Record<never, never>, Record<never, never>>,
     '/databases/firebird': RouteRecordInfo<'/databases/firebird', '/databases/firebird', Record<never, never>, Record<never, never>>,
     '/databases/influxdb': RouteRecordInfo<'/databases/influxdb', '/databases/influxdb', Record<never, never>, Record<never, never>>,
     '/databases/mariadb': RouteRecordInfo<'/databases/mariadb', '/databases/mariadb', Record<never, never>, Record<never, never>>,
@@ -88,6 +89,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/databases/dynamodb.vue': {
       routes: '/databases/dynamodb'
+      views: never
+    }
+    'src/pages/databases/elasticsearch.vue': {
+      routes: '/databases/elasticsearch'
       views: never
     }
     'src/pages/databases/firebird.vue': {
